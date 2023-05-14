@@ -8,12 +8,12 @@ export default class User extends BaseModel {
 
   @column()
   public name:string
-
-  @column()
-  public password:string
   
   @column()
   public username:string
+
+  @column()
+  public password:string
 
   @column()
   public active:boolean
