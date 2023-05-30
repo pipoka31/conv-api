@@ -11,8 +11,17 @@
   },
   "eslintConfig": {
     "extends": [
-      "plugin:adonis/typescriptApp"
-    ]
+      "plugin:adonis/typescriptApp",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error"
+      ]
+    }
   },
   "eslintIgnore": [
     "build"
@@ -33,6 +42,7 @@
   },
   "dependencies": {
     "@adonisjs/core": "^5.9.0",
+    "@adonisjs/lucid": "^18.3.0",
     "@adonisjs/repl": "^3.1.11",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
