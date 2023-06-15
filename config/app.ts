@@ -4,8 +4,8 @@
  * Feel free to let us know via PR, if you find something broken in this config
  * file.
  */
-
 import proxyAddr from 'proxy-addr'
+import { Ignitor } from '@adonisjs/core/build/standalone'
 import Env from '@ioc:Adonis/Core/Env'
 import type { ServerConfig } from '@ioc:Adonis/Core/Server'
 import type { LoggerConfig } from '@ioc:Adonis/Core/Logger'
@@ -231,5 +231,4 @@ export const profiler: ProfilerConfig = {
 | to the default config https://git.io/JT0WE
 |
 */
-export const validator: ValidatorConfig = {
-}
+export const validator: ValidatorConfig = {}
