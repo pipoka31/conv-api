@@ -20,10 +20,6 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.group(()=>{
-  Route.resource('/users','UsersControllers')
+Route.post('/login','AuthController.login')
 
-  Route.resource('/message','MessageControllers')
 
-  Route.resource('/conversation','ConversationControllers')
-})
