@@ -20,6 +20,11 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+
+Route.post('/createUser',"UsersControllers.store")
+
+Route.get('/spotify/user-profile','spotifyControllers.getUserProfile')
+
 Route.post('/login','AuthController.login')
 
 

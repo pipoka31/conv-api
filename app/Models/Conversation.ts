@@ -17,5 +17,5 @@ export default class Conversation extends BaseModel{
   public id_message: number
 
   @column.dateTime({autoCreate: true, autoUpdate: true})
-  public dateUpdate: DateTime
+  public date_update: DateTime
 }

@@ -10,7 +10,7 @@ export default class User extends BaseModel {
   public name:string
   
   @column()
-  public username:string
+  public user_name:string
 
   @column()
   public password:string
@@ -19,10 +19,10 @@ export default class User extends BaseModel {
   public active:boolean
 
   @column.dateTime({autoCreate: true})
-  public createAt: DateTime
+  public created_at: DateTime
 
   @column.dateTime({autoCreate: true, autoUpdate: true})
-  public updateAt: DateTime
+  public updated_at: DateTime
 
   @beforeSave()
   public static async hashPassword(user:User){
