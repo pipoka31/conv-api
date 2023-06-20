@@ -27,10 +27,12 @@ Route.post('/createMessege',"MessengeControllers.store")
 
 Route.post('/createConversation',"ConversationControllers.store")
 
-Route.get('/spotify/user-profile','spotifyControllers.getUserProfile')
-
 Route.post('/login','AuthController.login')
+
+Route.get('/spotify/user-profile','SpotifyControllers.getUserProfile')
+
+Route.get('/conversations/:userSenderId/:userReceiverId', 'ConversationControllers.getConversation')
 
 Route.get('/auth/spotify', 'spotifyControllers.redirectToLogin')
 
-Route.get('/auth/spotify/callback', 'spotifyControllers.handleCallback')
+Route.get('/auth/spotify/callback', 'SpotifyControllers.handleCallback')
