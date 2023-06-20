@@ -6,8 +6,8 @@ export default class UpdateUsersTable extends BaseSchema {
   public async up() {
     this.schema.table(this.tableName, (table) => {
         table.renameColumn('dateUpdate','date_update')
-       
-    
+        table.renameColumn('id_userSender','id_user_sender')
+        table.renameColumn('id_userReciever','id_user_reciever')
     })
   }
 }
