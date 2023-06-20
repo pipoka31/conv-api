@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "docker": "cd /app/database && docker build -t postgres-docker . && docker run -d -p 5433:5432 -e POSTGRES_PASSWORD=textoescrito --name conv-postgres postgres",
+    "docker": "cd app/database && docker build -t postgres-docker . && docker run -d -p 5433:5432 -e POSTGRES_PASSWORD=textoescrito --name conv-postgres postgres",
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
     "start": "node server.js",
+    "migration":"node ace migration:run",
     "test": "node ace test",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write ."

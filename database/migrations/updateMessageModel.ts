@@ -5,7 +5,7 @@ export default class UpdateUsersTable extends BaseSchema {
 
   public async up() {
     this.schema.table(this.tableName, (table) => {
-        table.renameColumn('createdAt','created_at')    
+        table.renameColumn('createdAt','created_at')
     })
   }
 }

@@ -8,10 +8,10 @@ export default class Conversation extends BaseModel{
   public id: number
 
   @column()
-  public id_userSender: number
+  public id_user_sender: number
 
   @column()
-  public id_userReciever: number
+  public id_user_reciever: number
 
   @column()
   public id_message: number
