@@ -20,10 +20,19 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.group(()=>{
-  Route.resource('/users','UsersControllers')
 
-  Route.resource('/message','MessageControllers')
+Route.post('/createUser',"UsersControllers.store")
 
-  Route.resource('/conversation','ConversationControllers')
-})
+Route.post('/createMessege',"MessengeControllers.store")
+
+Route.post('/createConversation',"ConversationControllers.store")
+
+Route.post('/login','AuthController.login')
+
+Route.get('/spotify/user-profile','SpotifyControllers.getUserProfile')
+
+Route.get('/conversations/:userSenderId/:userReceiverId', 'ConversationControllers.getConversation')
+
+Route.get('/auth/spotify', 'spotifyControllers.redirectToLogin')
+
+Route.get('/auth/spotify/callback', 'SpotifyControllers.handleCallback')

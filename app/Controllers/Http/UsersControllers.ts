@@ -20,6 +20,7 @@ export default class UserControllers{
   public async store({ request, response }: HttpContextContract){
     try {
       const body = request.body()
+      console.log(body)
      
       const user = await User.create(body)
   
@@ -44,7 +45,7 @@ export default class UserControllers{
   
       user.name = body.name?body.name:user.name
       user.password = body.password?body.password:user.password
-      user.username = body.email?body.email:user.username
+      user.user_name = body.email?body.email:user.user_name
   
       await user.save()
   

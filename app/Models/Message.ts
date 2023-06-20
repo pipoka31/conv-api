@@ -13,5 +13,5 @@ export default class Message extends BaseModel{
   public text: string
 
   @column.dateTime({autoCreate: true})
-  public createdAt: DateTime
+  public created_at: DateTime
 }
