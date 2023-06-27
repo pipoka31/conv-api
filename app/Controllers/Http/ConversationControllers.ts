@@ -75,7 +75,7 @@ export default class ConversationControllers{
     try {
 
       const query = `
-      SELECT users.name as sender, u.name as receiver, messages.text, messages.created_at
+      SELECT users.id as sender, u.id as receiver, messages.text, messages.created_at
       FROM conversations
       INNER JOIN users ON conversations.id_user_sender = users.id
       INNER JOIN users as u ON conversations.id_user_receiver = u.id

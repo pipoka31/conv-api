@@ -18,6 +18,9 @@ export default class User extends BaseModel {
   @column()
   public active:boolean
 
+  @column()
+  public thought:string
+
   @column.dateTime({autoCreate: true})
   public created_at: DateTime
 
@@ -29,5 +32,9 @@ export default class User extends BaseModel {
     if(user.password){
       user.password = await Hash.make(user.password)
     }
+  }
+
+  public async verifyPassword(plainPassword: string): Promise<boolean> {
+    return await Hash.verify(plainPassword, this.password)
   }
 }

@@ -1,5 +1,6 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
+import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class UserControllers{
 
@@ -43,9 +44,11 @@ export default class UserControllers{
   
       const user = await User.findOrFail(request.params().id)
   
-      user.name = body.name?body.name:user.name
-      user.password = body.password?body.password:user.password
-      user.user_name = body.email?body.email:user.user_name
+      user.name = body.name ? body.name : user.name
+      user.password = body.password ? body.password : user.password
+      user.user_name = body.email ? body.email : user.user_name
+      user.thought = body.thought ? body.thought : user.thought
+      user.updated_at = body.updated_at ? body.updated_at : user.updated_at
   
       await user.save()
   
@@ -77,6 +80,25 @@ export default class UserControllers{
 
       console.log('destroy user error', error);
 
+    }
+  }
+
+  public async getUserInfo({params,response}: HttpContextContract){
+    try {
+
+      const {id}  = params
+
+      const query = `
+      SELECT id, name, thought from users
+      WHERE id = ?
+      `
+
+      const userInfo = await Database.rawQuery(query,id)
+      
+      return response.json(userInfo.rows)
+                  
+    } catch (error) {
+      console.log('error getUserInfo', error)
     }
   }
 
