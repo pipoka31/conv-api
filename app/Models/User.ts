@@ -8,7 +8,7 @@ export default class User extends BaseModel {
 
   @column()
   public name:string
-  
+
   @column()
   public user_name:string
 
@@ -35,6 +35,6 @@ export default class User extends BaseModel {
   }
 
   public async verifyPassword(plainPassword: string): Promise<boolean> {
-    return await Hash.verify(plainPassword, this.password)
+    return (await Hash.verify(this.password, plainPassword))
   }
 }

@@ -38,3 +38,5 @@ Route.get('/auth/spotify', 'spotifyControllers.redirectToLogin')
 Route.get('/auth/spotify/callback', 'SpotifyControllers.handleCallback')
 
 Route.get('/userInfo/:id','UsersControllers.getUserInfo')
+
+Route.post('/pusher/auth', 'AuthController.pusherAuth')
