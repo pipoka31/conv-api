@@ -5,6 +5,7 @@
   "compilerOptions": {
     "outDir": "build",
     "rootDir": "./",
+    "esModuleInterop": true,
     "sourceMap": true,
     "paths": {
       "App/*": ["./app/*"],

@@ -20,7 +20,6 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-
 Route.post('/createUser',"UsersControllers.store")
 
 Route.post('/createMessege',"MessengeControllers.store")
@@ -29,14 +28,16 @@ Route.post('/createConversation',"ConversationControllers.store")
 
 Route.post('/login','AuthController.login')
 
-Route.get('/spotify/user-profile','SpotifyControllers.getUserProfile')
-
 Route.get('/conversations/:userSenderId/:userReceiverId', 'ConversationControllers.getConversation')
-
-Route.get('/auth/spotify', 'spotifyControllers.redirectToLogin')
-
-Route.get('/auth/spotify/callback', 'SpotifyControllers.handleCallback')
 
 Route.get('/userInfo/:id','UsersControllers.getUserInfo')
 
 Route.post('/pusher/auth', 'AuthController.pusherAuth')
+
+Route.get('/auth/spotify', 'AuthController.spotifyRedirect')
+
+Route.get('/auth/spotify/callback', 'AuthController.spotifyCallback')
+
+Route.get('/recently-played/:accessToken', 'MusicController.recentlyPlayed').as('recently-played')
+
+
