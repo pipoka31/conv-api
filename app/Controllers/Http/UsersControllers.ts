@@ -89,7 +89,7 @@ export default class UserControllers{
       const {id}  = params
 
       const query = `
-      SELECT id, name, thought from users
+      SELECT id, name, user_name, thought from users
       WHERE id = ?
       `
 

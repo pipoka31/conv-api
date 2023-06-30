@@ -26,7 +26,7 @@ export default class AuthController {
 
       public async pusherAuth({ request, params }: HttpContextContract){
 
-        const { socket_id, channel_name, id, name, username, } = request.body();
+        const { socket_id, channel_name, cod, name, username, } = request.body();
 
         const Pusher = require('pusher')
 
@@ -42,7 +42,7 @@ export default class AuthController {
         const channel = channel_name;
 
         const presenceData = {
-          user_id: id,
+          user_id: cod,
           user_info: { name, username, status:"online" }
         };
         // This authenticates every user. Don't do this in production!
