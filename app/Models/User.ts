@@ -21,6 +21,9 @@ export default class User extends BaseModel {
   @column()
   public thought:string
 
+  @column()
+  public color:string
+
   @column.dateTime({autoCreate: true})
   public created_at: DateTime
 

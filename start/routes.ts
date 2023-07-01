@@ -40,3 +40,5 @@ Route.get('/auth/spotify/callback', 'SpotifyControllers.handleCallback')
 Route.get('/userInfo/:id','UsersControllers.getUserInfo')
 
 Route.post('/pusher/auth', 'AuthController.pusherAuth')
+
+Route.put('/updateUser/:id', "UsersControllers.update");

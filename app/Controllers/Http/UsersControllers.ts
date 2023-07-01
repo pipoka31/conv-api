@@ -20,12 +20,12 @@ export default class UserControllers{
 
   public async store({ request, response }: HttpContextContract){
     try {
-      const body = request.body()
-      console.log(body)
+      const body = request.body();
+      console.log(body);
      
-      const user = await User.create(body)
+      const user = await User.create(body);
   
-      response.status(201)
+      response.status(201);
   
       return{
         message: "usuário cadastrado com sucesso!",
@@ -49,6 +49,7 @@ export default class UserControllers{
       user.user_name = body.email ? body.email : user.user_name
       user.thought = body.thought ? body.thought : user.thought
       user.updated_at = body.updated_at ? body.updated_at : user.updated_at
+      user.color = body.color ? body.color : user.color
   
       await user.save()
   
@@ -89,7 +90,7 @@ export default class UserControllers{
       const {id}  = params
 
       const query = `
-      SELECT id, name, user_name, thought from users
+      SELECT id, name, user_name, thought, color from users
       WHERE id = ?
       `
 
