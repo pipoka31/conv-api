@@ -70,6 +70,29 @@ export default class GroupController {
       return response.noContent()
     }
 
+    public async getIDGroup({params,response}:HttpContextContract){
+      try {
+        const {user_1,user_2} = params
+  
+          let query = `
+          select g.id as group_id from groups as g
+          inner join users as u on g.user_1 = u.id
+          inner join users as us on g.user_2 = us.id
+          where (g.user_1 = ? and g.user_2 = ?) or (g.user_1 = ? or g.user_2 = ?)
+          ;
+          `
+          const groups = await Database.rawQuery(query, [user_1,user_2,user_2,user_1])
+          response.status(201)
+          return{
+            message: "recuperação dos grupos",
+            group: groups.rows
+        }
+
+      } catch (error) {
+        console.log('error returning groupID',error)
+      }
+    }
+
     public async getGroups({params, response}: HttpContextContract){
 
         try {
