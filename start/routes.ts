@@ -35,14 +35,26 @@ Route.get('/conversations/:group_id', 'ConversationControllers.getConversation')
 
 Route.get('/auth/spotify', 'spotifyControllers.redirectToLogin')
 
-Route.get('/userInfo/:id','UsersControllers.getUserInfo')
+<<<<<<< HEAD
+=======
+Route.get('/groups/:user1','GroupController.getGroups')
 
 Route.post('/pusher/auth', 'AuthController.pusherAuth')
+
+Route.get('/auth/spotify/redirect', 'AuthController.spotifyRedirect')
+
+Route.get('/auth/spotify/callback', 'SpotifyControllers.handleCallback')
+
+>>>>>>> 987570bc83ad34bc456fdb778d42c339cc3f6edc
+Route.get('/userInfo/:id','UsersControllers.getUserInfo')
 
 Route.put('/updateUser/:id', "UsersControllers.update");
 
 Route.post('/createGroup', "GroupController.store")
+<<<<<<< HEAD
 
 Route.get('/groups/:user1','GroupController.getGroups')
 
 Route.get('/groupID/:user_1/:user_2','GroupController.getIDGroup')
+=======
+>>>>>>> 987570bc83ad34bc456fdb778d42c339cc3f6edc
