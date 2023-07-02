@@ -77,22 +77,34 @@ export default class GroupController {
   
           let query = `
           select 
-          us.* as user1,
-          u.* as user2,  
+          *,  
           g.id as group_id from groups as g
-          inner join users as u on g.user_1 = u.id
-          inner join users as us on g.user_2 = us.id
           where g.user_1 = ? or g.user_2 = ?
+          group by id
           ;
           `
           const groups = await Database.rawQuery(query, [user1,user1])
-          console.log(groups.rows)
-          let notMe = groups.rows.filter((user)=> user.id !== user1);
+          const users = [];
 
+          for(let group of groups.rows){
+
+            let id = null;
+            if(group.user_1 != user1) id = group.user_1
+            if(group.user_2 != user1) id = group.user_2
+
+            console.log("id", id)
+            let userInfo = (await Database.rawQuery(`
+              SELECT id, name, user_name, thought, color from users where id = ${id} 
+            `)).rows[0]
+
+            userInfo.group_id = group.group_id;
+
+            users.push(userInfo);
+          }
           response.status(201)
           return{
             message: "recuperação dos grupos",
-            group: notMe
+            group: [...users]
         }
         } catch (error) {
           console.log('error find groups',error)
