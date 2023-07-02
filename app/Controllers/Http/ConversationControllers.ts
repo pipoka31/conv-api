@@ -24,7 +24,7 @@ export default class ConversationControllers{
     try {
       
       const body = request.body()
-     
+          
       const conversation = await Conversation.create(body)
   
       response.status(201)
@@ -49,7 +49,7 @@ export default class ConversationControllers{
       const conversation = await Conversation.findOrFail(request.params().id)
   
       conversation.id_user_sender = body.id_userSender ? body.id_userSender : conversation.id_user_sender
-      conversation.id_user_reciever = body.id_userReciever ? body.id_userReciever : conversation.id_user_reciever
+      conversation.id_user_receiver = body.id_userReciever ? body.id_userReciever : conversation.id_user_receiver
       conversation.id_message = body.id_message ? body.id_message : conversation.id_message
   
       await conversation.save()
@@ -70,7 +70,8 @@ export default class ConversationControllers{
 
   public async getConversation({params, response}: HttpContextContract){
     
-    const { group_id } = params;
+    const { group_id } = params
+    console.log(group_id)
     
     try {
 

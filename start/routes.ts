@@ -44,3 +44,5 @@ Route.put('/updateUser/:id', "UsersControllers.update");
 Route.post('/createGroup', "GroupController.store")
 
 Route.get('/groups/:user1','GroupController.getGroups')
+
+Route.get('/groupID/:user_1/:user_2','GroupController.getIDGroup')
