@@ -72,7 +72,7 @@ export default class ConversationControllers{
     
     const { group_id } = params
     console.log(group_id)
-    
+>>>>>>>>> Temporary merge branch 2
     
     try {
 
