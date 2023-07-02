@@ -70,7 +70,7 @@ export default class ConversationControllers{
 
   public async getConversation({params, response}: HttpContextContract){
     
-    const { userSenderId, userReceiverId } = params
+    const { group_id } = params
     
     try {
 
@@ -80,11 +80,10 @@ export default class ConversationControllers{
       INNER JOIN users ON conversations.id_user_sender = users.id
       INNER JOIN users as u ON conversations.id_user_receiver = u.id
       INNER JOIN messages ON conversations.id_message = messages.id
-      WHERE (conversations.id_user_sender = ? AND conversations.id_user_receiver = ?) OR
-            (conversations.id_user_sender = ? AND conversations.id_user_receiver = ?)
+      WHERE group_id = ?
     `
 
-    const conversation = await Database.rawQuery(query, [userSenderId, userReceiverId, userReceiverId, userSenderId])
+    const conversation = await Database.rawQuery(query, [group_id])
 
       return response.json(conversation.rows)
 

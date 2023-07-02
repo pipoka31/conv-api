@@ -31,14 +31,20 @@ Route.post('/login','AuthController.login')
 
 Route.get('/spotify/user-profile','SpotifyControllers.getUserProfile')
 
-Route.get('/conversations/:userSenderId/:userReceiverId', 'ConversationControllers.getConversation')
+Route.get('/conversations/:group_id', 'ConversationControllers.getConversation')
 
 Route.get('/auth/spotify', 'spotifyControllers.redirectToLogin')
+
+Route.get('/groups/:user1','GroupController.getGroups')
+
+Route.post('/pusher/auth', 'AuthController.pusherAuth')
+
+Route.get('/auth/spotify/redirect', 'AuthController.spotifyRedirect')
 
 Route.get('/auth/spotify/callback', 'SpotifyControllers.handleCallback')
 
 Route.get('/userInfo/:id','UsersControllers.getUserInfo')
 
-Route.post('/pusher/auth', 'AuthController.pusherAuth')
-
 Route.put('/updateUser/:id', "UsersControllers.update");
+
+Route.post('/createGroup', "GroupController.store")
