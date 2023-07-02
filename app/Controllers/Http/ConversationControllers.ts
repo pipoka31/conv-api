@@ -70,7 +70,7 @@ export default class ConversationControllers{
 
   public async getConversation({params, response}: HttpContextContract){
     
-    const { group_id } = params
+    const { group_id } = params;
     
     try {
 

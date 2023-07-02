@@ -73,21 +73,26 @@ export default class GroupController {
     public async getGroups({params, response}: HttpContextContract){
 
         try {
-          const {user1} = params
-          console.log(user1)
+          const { user1 } = params
   
           let query = `
-          select us.id, us.name, us.thought, us.color, us.user_name, g.id as group_id from groups as g
+          select 
+          us.* as user1,
+          u.* as user2,  
+          g.id as group_id from groups as g
           inner join users as u on g.user_1 = u.id
           inner join users as us on g.user_2 = us.id
           where g.user_1 = ? or g.user_2 = ?
           ;
           `
           const groups = await Database.rawQuery(query, [user1,user1])
+          console.log(groups.rows)
+          let notMe = groups.rows.filter((user)=> user.id !== user1);
+
           response.status(201)
           return{
             message: "recuperação dos grupos",
-            group: groups.rows
+            group: notMe
         }
         } catch (error) {
           console.log('error find groups',error)
