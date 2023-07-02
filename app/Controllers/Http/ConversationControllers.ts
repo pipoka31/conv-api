@@ -72,7 +72,7 @@ export default class ConversationControllers{
     
     const { group_id } = params
     console.log(group_id)
-    const { group_id } = params
+    
     
     try {
 
@@ -83,7 +83,7 @@ export default class ConversationControllers{
       INNER JOIN users as u ON conversations.id_user_receiver = u.id
       INNER JOIN messages ON conversations.id_message = messages.id
       WHERE group_id = ?;
-      WHERE group_id = ?
+      
     `
 
     const conversation = await Database.rawQuery(query, [group_id])
